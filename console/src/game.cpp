@@ -5,7 +5,8 @@
 namespace mindmath::console {
 game::game()
 {
-    setup_.max_arguments = 3;
+    setup_.examples_amount = 4;
+    setup_.max_arguments = 2;
     generator_.setup(setup_);
 }
 
@@ -26,7 +27,9 @@ bool game::run()
 
     console::printer o_printer(statistic_);
     for (const auto& example : to_solve) {
-        o_printer.solve_example(example);
+        if (!o_printer.solve_example(example)) {
+            break; // game failed
+        }
     }
     std::cout << std::endl;
 

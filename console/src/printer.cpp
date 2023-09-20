@@ -25,6 +25,8 @@ bool printer::solve_example(const example_view& o_example_view) const
     if (result) {
         statistic_.solved += 1;
         statistic_.not_solved -= 1;
+    } else {
+        std::cout << str_number << o_example_view.representation << o_example_view.answer << std::endl;
     }
 
     return result;

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace mindmath::console {
 
