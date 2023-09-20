@@ -1,9 +1,11 @@
 cc_library(
   name = "mindmath.console.internal",
-  srcs = glob(["src/printer.cpp"]),
+  srcs = glob(["src/game.cpp",
+               "src/printer.cpp"]),
   hdrs = glob(["src/*.h"]),
   visibility = ["//console:__subpackages__"],
-  deps = ["//mindmath:mindmath"]
+  deps = ["//common:mindmath.common",
+          "//mindmath:mindmath.mindmath"]
 )
 
 cc_binary(

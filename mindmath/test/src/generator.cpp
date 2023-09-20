@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 #include "mindmath/example_view.h"
 #include "mindmath/generator.h"
-#include "mindmath/operation.h"
 
 namespace {
 inline void DefaultTestSet(const std::vector<mindmath::example_view>& generated_set) {
@@ -12,24 +11,30 @@ inline void DefaultTestSet(const std::vector<mindmath::example_view>& generated_
 }
 
 TEST(MindmathGeneratorTest, EmptySet) {
-    mindmath::setup empty_setup;
+    mindmath::generator o_generator;
+    mindmath::common::setup empty_setup;
 
-    const auto result = mindmath::generator(empty_setup).create();
+    o_generator.setup(empty_setup);
+    const auto result = o_generator.create();
     DefaultTestSet(result);
 }
 
 TEST(MindmathGeneratorTest, Test1) {
-    mindmath::setup setup;
-    setup.allowed_operations = static_cast<uint16_t>(mindmath::operation::NONE);
+    mindmath::generator o_generator;
+    mindmath::common::setup o_setup;
+    o_setup.allowed_operations = static_cast<uint16_t>(mindmath::common::operation::NONE);
 
-    const auto result = mindmath::generator(setup).create();
+    o_generator.setup(o_setup);
+    const auto result = o_generator.create();
     DefaultTestSet(result);
 }
 
 TEST(MindmathGeneratorTest, Test2) {
-    mindmath::setup setup;
-    setup.max_arguments = 3;
+    mindmath::generator o_generator;
+    mindmath::common::setup o_setup;
+    o_setup.max_arguments = 3;
 
-    const auto result = mindmath::generator(setup).create();
+    o_generator.setup(o_setup);
+    const auto result = o_generator.create();
     DefaultTestSet(result);
 }

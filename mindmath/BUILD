@@ -1,10 +1,8 @@
 cc_library(
-  name = "mindmath",
+  name = "mindmath.mindmath",
   srcs = ["src/generator.cpp"],
-  hdrs = ["include/mindmath/example_view.h",
-          "include/mindmath/generator.h",
-          "include/mindmath/operation.h",
-          "include/mindmath/setup.h"],
+  hdrs = glob(["include/mindmath/*.h"]),
   strip_include_prefix = "include",
-  visibility = ["//visibility:public"]
+  visibility = ["//visibility:public"],
+  deps = ["//common:mindmath.common"]
 )

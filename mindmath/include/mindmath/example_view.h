@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 namespace mindmath {
 
@@ -14,5 +15,6 @@ struct example_view_t
 };
 
 using example_view = example_view_t<>;
+using example_views = std::vector<example_view>;
 
 }  // namespace mindmath

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "example_view.h"
-#include "setup.h"
+#include "common/setup.h"
 
 #include <vector>
 
@@ -9,11 +9,11 @@ namespace mindmath {
 
 class generator {
 public:
-    generator(setup new_setup);
-    std::vector<example_view> create();
+    void setup(common::setup new_setup);
+    example_views create();
 
 private:
-    setup setup_;
+    common::setup setup_;
 };
 
 } // namespace mindmath

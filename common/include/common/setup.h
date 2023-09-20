@@ -2,7 +2,7 @@
 
 #include "operation.h"
 
-namespace mindmath {
+namespace mindmath::common {
 
 constexpr size_t DEFAULT_EXAMPLES_AMOUNT = 42;
 constexpr size_t DEFAULT_MAX_ARGUMENTS = 2;
@@ -14,4 +14,4 @@ struct setup {
     uint16_t allowed_operations = DEFAULT_ALLOWED_OPERATIONS;
 };
 
-} // namespace mindmath
+} // namespace mindmath::common

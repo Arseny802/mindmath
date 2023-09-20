@@ -1,6 +1,7 @@
 #pragma once
+#include <stdint.h>
 
-namespace mindmath {
+namespace mindmath::common {
 
 
 
@@ -13,4 +14,4 @@ enum class operation : uint16_t {
     ALL = ADDITION + SUBTRACTION + MULTIPLICATION + DIVISION
 };
 
-} // namespace mindmath
+} // namespace mindmath::common

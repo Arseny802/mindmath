@@ -1,14 +1,14 @@
 #include "mindmath/generator.h"
 
 namespace mindmath {
-generator::generator(setup new_setup) : setup_(std::move(new_setup))
+void generator::setup(common::setup new_setup)
 {
-
+    setup_ = std::move(new_setup);
 }
 
-std::vector<example_view> generator::create()
+example_views generator::create()
 {
-    std::vector<example_view> result;
+    example_views result;
 
     {
         example_view test_example;
