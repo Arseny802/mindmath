@@ -31,9 +31,14 @@ add_subdirectory(test)
 ##########################
 ## Executor of application
 
+if (${CMAKE_GENERATOR_PLATFORM} EQUAL "x64")
+    set(ICON_OBJECT_FILE "../resource/icon-math-96.o")
+elseif(${CMAKE_GENERATOR_PLATFORM} EQUAL "Win32")
+    set(ICON_OBJECT_FILE "")
+endif()
+
 add_executable(${PROJECT_NAME}
-    src/main.cpp
-    ../resource/icon-math-96.o)
+    src/main.cpp ${ICON_OBJECT_FILE})
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CMAKE_PROJECT_NAME}.common
     ${CMAKE_PROJECT_NAME}.mindmath
