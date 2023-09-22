@@ -31,10 +31,10 @@ add_subdirectory(test)
 ##########################
 ## Executor of application
 
-if (${CMAKE_GENERATOR_PLATFORM} EQUAL "x64")
+if ("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "x64")
     set(ICON_OBJECT_FILE "../resource/icon-math-96.o")
-elseif(${CMAKE_GENERATOR_PLATFORM} EQUAL "Win32")
-    set(ICON_OBJECT_FILE "")
+elseif("${CMAKE_GENERATOR_PLATFORM}" STREQUAL "Win32")
+    set(ICON_OBJECT_FILE "")  #TODO: create icon for x86 platform
 endif()
 
 add_executable(${PROJECT_NAME}

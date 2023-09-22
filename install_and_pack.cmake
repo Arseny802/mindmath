@@ -17,13 +17,16 @@ if(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS)
         PROGRAMS ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}
         DESTINATION bin COMPONENT runtime_libraries)
 endif(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS)
+install(
+    DIRECTORY docs/
+    DESTINATION documentation COMPONENT documentation)
 
 set(CPACK_PACKAGE_NAME "${CMAKE_PROJECT_NAME}")
 set(CPACK_PACKAGE_VENDOR "${VENDOR}")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "${VENDOR} math game")
 set(CPACK_NSIS_DISPLAY_NAME "${CMAKE_PROJECT_NAME} ${CPACK_PACKAGE_VERSION}")
-set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/Copyright.txt")
-set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/Copyright.txt")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/docs/Copyright.txt")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/docs/Copyright.txt")
 
 if (VENDOR)
     set(CPACK_PACKAGE_INSTALL_DIRECTORY "${VENDOR}\\\\${CMAKE_PROJECT_NAME}")
@@ -33,7 +36,7 @@ endif(VENDOR)
 
 set(CPACK_NSIS_MODIFY_PATH ON)
 set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
-set(CPACK_COMPONENTS_ALL ${CMAKE_PROJECT_NAME}.console runtime_libraries)
+set(CPACK_COMPONENTS_ALL ${CMAKE_PROJECT_NAME}.console runtime_libraries documentation)
 
 set(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/resource\\\\icon-math-96.bmp")
 set(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}/resource/icon-math-96.ico")
@@ -54,7 +57,6 @@ set(CPACK_PACKAGE_EXECUTABLES
     "${CMAKE_PROJECT_NAME}.console")
 SET(CPACK_OUTPUT_FILE_PREFIX ../)
 
-FILE(COPY "${CMAKE_CURRENT_SOURCE_DIR}/docs" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 include(CPack)
 
 cpack_add_component_group("Mindmath" EXPANDED
@@ -64,6 +66,12 @@ cpack_add_component(
     DISPLAY_NAME "Console"
     DESCRIPTION "Console view of ${CMAKE_PROJECT_NAME} application."
     GROUP ${CMAKE_PROJECT_NAME})
+cpack_add_component(
+    documentation
+    DISPLAY_NAME "Documentation"
+    DESCRIPTION "Documentation for ${CMAKE_PROJECT_NAME} application."
+    GROUP ${CMAKE_PROJECT_NAME}
+    DEPENDS "${CMAKE_PROJECT_NAME}.console;")
 
 cpack_add_component(
     runtime_libraries
