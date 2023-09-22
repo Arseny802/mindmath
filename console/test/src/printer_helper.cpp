@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../../src/printer.h"
+#include "console/printer.h"
 
 namespace mindmath::console {
 

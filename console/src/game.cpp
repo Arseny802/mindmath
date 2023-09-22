@@ -1,5 +1,5 @@
-#include "game.h"
-#include "printer.h"
+#include "console/game.h"
+#include "console/printer.h"
 #include <iostream>
 
 namespace mindmath::console {

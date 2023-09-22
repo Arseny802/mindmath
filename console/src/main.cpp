@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "game.h"
+#include "console/game.h"
 
 int main() {
     bool result;

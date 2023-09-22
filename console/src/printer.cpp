@@ -1,4 +1,4 @@
-#include "printer.h"
+#include "console/printer.h"
 
 #include <cassert>
 #include <iostream>
@@ -11,7 +11,7 @@ printer::printer(statistic& o_statistic) : statistic_(o_statistic)
 
 bool printer::solve_example(const example_view& o_example_view) const
 {
-    std::string str_number = helper_.number_to_string(
+    std::string str_number = mindmath::console::printer::helper::number_to_string(
         statistic_.solved, statistic_.not_solved + statistic_.solved);
 
     bool result;
@@ -32,7 +32,7 @@ bool printer::solve_example(const example_view& o_example_view) const
     return result;
 }
 
-std::string printer::helper::number_to_string(size_t index, size_t max_number) const
+std::string printer::helper::number_to_string(size_t index, size_t max_number)
 {
     assert(max_number > index);
     std::string result = "#";
@@ -50,7 +50,7 @@ std::string printer::helper::number_to_string(size_t index, size_t max_number) c
     return result;
 }
 
-int printer::helper::count_digits(size_t number) const
+int printer::helper::count_digits(size_t number)
 {
     int digits = 0;
     do {
