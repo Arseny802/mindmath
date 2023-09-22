@@ -31,7 +31,9 @@ add_subdirectory(test)
 ##########################
 ## Executor of application
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME}
+    src/main.cpp
+    ../resource/icon-math-96.o)
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CMAKE_PROJECT_NAME}.common
     ${CMAKE_PROJECT_NAME}.mindmath
