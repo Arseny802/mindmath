@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 #include "statistic.h"
 #include "common/setup.h"
@@ -9,12 +10,13 @@ class game
 {
 public:
     game();
+    ~game();
 
     bool run();
 
 private:
     console::statistic statistic_{};
-    common::setup setup_{};
+    std::unique_ptr<common::setup> setup_{};
     generator generator_{};
 };
 } // namespace mindmath::console

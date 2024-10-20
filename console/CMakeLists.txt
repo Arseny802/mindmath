@@ -21,6 +21,7 @@ target_include_directories(${PROJECT_NAME}.internal
 
 target_link_libraries(${PROJECT_NAME}.internal PRIVATE
     ${CMAKE_PROJECT_NAME}.common
+    ${CMAKE_PROJECT_NAME}.config
     ${CMAKE_PROJECT_NAME}.mindmath
     spdlog::spdlog
     fmt::fmt)

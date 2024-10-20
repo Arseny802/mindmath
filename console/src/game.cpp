@@ -1,18 +1,27 @@
 #include "console/game.h"
 #include "console/printer.h"
+#include "config/config_parser_factory.h"
 #include <iostream>
 
 namespace mindmath::console {
-game::game()
-{
-    setup_.examples_amount = 4;
-    setup_.max_arguments = 2;
-    generator_.setup(setup_);
+namespace {
+constexpr config::parsing_types DEFAULT_CONFIG_TYPE = config::parsing_types::ini;
+const std::string DEFAULT_CONFIG_FILENAME = "mindmath_config.ini";
 }
+
+game::game() = default;
+game::~game() = default;
 
 bool game::run()
 {
     std::cout << std::endl << "Starting Mindmath game!" << std::endl << std::endl;
+
+    {
+        auto parser = config::config_parser_factory::generate_parser(DEFAULT_CONFIG_TYPE);
+        parser->read(DEFAULT_CONFIG_FILENAME);
+        setup_ = parser->get_setup();
+        generator_.setup(*setup_);
+    }
 
     std::cout << "Generating examples...  ";
     const example_views to_solve = generator_.create();
